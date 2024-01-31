@@ -26,16 +26,16 @@
         <input type="text" id="userId" disabled>
         <br>
         <label for="userName">Name:</label>
-        <input type="text" id="userName">
+        <input type="text" id="userName" required>
         <br>
         <label for="userAge">Age:</label>
-        <input type="text" id="userAge">
+        <input type="text" id="userAge" required>
         <br>
         <label for="userPhone">Phone:</label>
-        <input type="text" id="userPhone">
+        <input type="text" id="userPhone" required>
         <br>
-        <button type="button" onclick="addUser()">Add User</button>
-        <button type="button" onclick="saveUser()">Save</button>
+        <button type="button" onclick="addUser()" id="addButton">Add User</button>
+        <button type="button" onclick="saveUser()" id="saveButton" style="display: none;">Save</button>
     </form>
 
     <script src="/script.js"></script>

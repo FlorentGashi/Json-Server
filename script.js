@@ -33,6 +33,9 @@ function updateUser(user) {
     document.getElementById('userName').value = user.name;
     document.getElementById('userAge').value = user.age;
     document.getElementById('userPhone').value = user.phone;
+
+    document.getElementById('saveButton').style.display = 'inline-block';
+    document.getElementById('addButton').style.display = 'none';
 }
 
 function saveUser() {
@@ -40,6 +43,9 @@ function saveUser() {
     var userName = document.getElementById('userName').value;
     var userAge = document.getElementById('userAge').value;
     var userPhone = document.getElementById('userPhone').value;
+
+    document.getElementById('saveButton').style.display = 'none';
+    document.getElementById('addButton').style.display = 'inline-block';
 
     var userIndex = users.findIndex(function(user) {
         return user.id == userId;
