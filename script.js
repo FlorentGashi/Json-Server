@@ -51,6 +51,7 @@ function saveUser() {
         users[userIndex].phone = userPhone;
 
         document.getElementById('userForm').reset();
+
         displayUsers();
     }
 }
@@ -65,5 +66,28 @@ function deleteUser(user) {
         displayUsers();
     }
 }
+
+function addUser() {
+    var userName = document.getElementById('userName').value;
+    var userAge = document.getElementById('userAge').value;
+    var userPhone = document.getElementById('userPhone').value;
+
+    var maxId = Math.max(...users.map(user => user.id));
+    var newUserId = maxId + 1;
+
+    var newUser = {
+        id: newUserId,
+        name: userName,
+        age: userAge,
+        phone: userPhone
+    };
+
+    users.push(newUser);
+
+    document.getElementById('userForm').reset();
+
+    displayUsers();
+}
+
 
 displayUsers();
