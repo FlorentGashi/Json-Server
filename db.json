@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Granit",
+      "age": "32",
+      "phone": "049666456"
+    },
+    {
+      "id": 2,
+      "name": "Bekimkimkimiiii",
+      "age": 53,
+      "phone": "044600386"
+    }
+  ]
+}

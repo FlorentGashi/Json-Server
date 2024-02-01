@@ -1,8 +1,4 @@
-var users = [
-    {id: 1, name: 'Granit', age: '30', phone: '049666456'},
-    {id: 2, name: 'Bekim', age: '25', phone: '044600386'}
-];
-
+var users = [];
 function displayUsers() {
     var tableBody = document.getElementById('userTable').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = '';
@@ -56,9 +52,20 @@ function saveUser() {
         users[userIndex].age = userAge;
         users[userIndex].phone = userPhone;
 
-        document.getElementById('userForm').reset();
+        fetch(`http://localhost:3011/users/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(users[userIndex]),
+        })
 
-        displayUsers();
+        .then(response => response.json())
+        .then(data => {
+            console.log('Useri u be update:', data);
+            document.getElementById('userForm').reset();
+            displayUsers();
+        })
     }
 }
 
@@ -69,7 +76,15 @@ function deleteUser(user) {
             return u.id !== user.id;
         });
 
-        displayUsers();
+        fetch(`http://localhost:3011/users/${user.id}`, {
+            method: 'DELETE',
+        })
+
+        .then(response => response.json())
+        .then(data => {
+            console.log('Useri u fshi:', data);
+            displayUsers();
+        })
     }
 }
 
@@ -88,12 +103,27 @@ function addUser() {
         phone: userPhone
     };
 
-    users.push(newUser);
+    fetch('http://localhost:3011/users', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+    })
 
-    document.getElementById('userForm').reset();
-
-    displayUsers();
+    .then(response => response.json())
+    .then(data => {
+        console.log('Useri u shtu:', data);
+        document.getElementById('userForm').reset();
+        displayUsers();
+        window.location.reload();
+    })
 }
 
 
-displayUsers();
+fetch('http://localhost:3011/users')
+.then(response => response.json())
+.then(data => {
+    users = data;
+    displayUsers();
+})
