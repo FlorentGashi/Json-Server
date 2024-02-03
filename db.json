@@ -2,15 +2,15 @@
   "users": [
     {
       "id": 1,
-      "name": "Granit",
+      "name": "John",
       "age": "32",
-      "phone": "049666456"
+      "phone": "0123456"
     },
     {
       "id": 2,
-      "name": "Bekimkimkimiiii",
+      "name": "Doe",
       "age": 53,
-      "phone": "044600386"
+      "phone": "01234567"
     }
   ]
 }
